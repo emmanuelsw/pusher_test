@@ -1,0 +1,8 @@
+{
+    "name": "emmanuelsw/test_websockets",
+    "description": "test",
+    "type": "project",
+    "require": {
+        "pusher/pusher-php-server": "^3.0"
+    }
+}

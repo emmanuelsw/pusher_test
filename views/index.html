@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+  <title>Pusher Test</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+  <script>
+
+    var pusher = new Pusher('7892267db562b6e4976b', {
+      cluster: 'us2',
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe('pedidos');
+
+    channel.bind('actualizar', function(data) {
+
+      let obj = JSON.parse(data);
+      console.log(obj);
+
+      let table = 
+      "<tr><td>"+obj.id+"</td>"+
+      "<td>"+obj.producto+"</td>"+
+      "<td>"+obj.precio+"</td>"+
+      "<td>"+obj.asesor+"</td></tr>";
+
+      $("#cuerpito").append(table);
+
+    });
+
+  </script>
+  <body>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <td>id</td>
+          <td>Producto</td>
+          <td>Precio</td>
+          <td>Asesor</td>
+        </tr>
+      </thead>
+      <tbody id="cuerpito">
+        
+      </tbody>
+    </table>
+  </body>
+</head>
